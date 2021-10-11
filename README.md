@@ -16,4 +16,4 @@
     pip install numpy
 
 ### <u>terminal python file 実行</u>
-<center><h3>ctrl + command + P</h3></center>
+    ctrl + command + P
