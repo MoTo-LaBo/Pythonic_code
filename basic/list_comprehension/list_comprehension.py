@@ -95,7 +95,7 @@ while True:
                 break
             # -20°C ~ 40°C の領域を外れた場合の処理, その他例外全て (半角でなかった場合も含む)
             case _:
-                print(f'入力 Error です\n -20 ~ 40 or -20.0 ~ 40.0 の間で入力をお願いします >>> ')
+                print(f'入力 Error です\n -20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい')
                 continue
 
     # 数字以外だった場合 & float(小数)の判定 -> float(小数)だった場合の処理
@@ -108,13 +108,13 @@ while True:
                     break
                 # -20°C ~ 40°C の領域を外れた場合の処理, その他例外全て (半角でなかった場合も含む)
                 case _:
-                    print(f'入力 Error です\n -20 ~ 40 or -20.0 ~ 40.0 の間で入力をお願いします >>> ')
+                    print(f'入力 Error です\n -20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい')
                     continue
         except ValueError:
-            print(f'入力された値は{celsius_num}です。\n数字の 20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい >>> ')
+            print(f'入力された値は{celsius_num}です。\n数字の 20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい')
             continue
 
     # その他の場合の処理
     else:
-        print(f'入力された値は{celsius_num}です。\n数字の 20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい >>> ')
+        print(f'入力された値は{celsius_num}です。\n数字の 20 ~ 40 or -20.0 ~ 40.0 の間で入力して下さい')
         continue
