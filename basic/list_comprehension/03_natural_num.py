@@ -22,8 +22,8 @@ while True:
 
         # 判定後の処理　-> 正常な入力値か？の振り分け 1 ~ 100 の領域を指定
         match n_num:
-            case int() if n_num >= 1 and n_num <= 100:
-                n_list = [i for i in range(n_num, 100, n_num)]
+            case int() if 1 <= n_num <= 100:
+                n_list = [i for i in range(n_num, 101, n_num)]
                 print(f'\n自然数の倍数list : {n_list}')
                 break
             # 1 ~ 100 の領域を外れた場合の処理, その他例外全て (半角でなかった場合も含む)

@@ -61,8 +61,8 @@ while True:
 
         # 判定後の処理　-> 正常な入力値か？(正常な気温か？の振り分け)　-20°C ~ 40°C の一般的な領域を指定
         match c_num:
-            case int() if c_num >= -20 and c_num <= 40:
-                print(f'\n華氏 -> {1.8 * c_num + 32:.3g} °Fです')
+            case int() if -20 <= c_num <= 40:
+                print(f'\n華氏 -> {1.8 * c_num + 32:.1f} °Fです')
                 break
             # -20°C ~ 40°C の領域を外れた場合の処理, その他例外全て (半角でなかった場合も含む)
             case _:
@@ -74,8 +74,8 @@ while True:
         try:
             c_fnum = float(celsius_num)
             match c_fnum:
-                case float() if c_fnum >= -20 and c_fnum <= 40:
-                    print(f'\n華氏 -> {1.8 * c_fnum + 32:.3g} °Fです')
+                case float() if -20 <= c_fnum <= 40:
+                    print(f'\n華氏 -> {1.8 * c_fnum + 32:.1f} °Fです')
                     break
                 # -20°C ~ 40°C の領域を外れた場合の処理, その他例外全て (半角でなかった場合も含む)
                 case _:

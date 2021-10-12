@@ -34,6 +34,6 @@ from random import sample
 
 """
 
-Celsius2 = sample(range(0, 40), 10)
-Fahrenheit = [f'{1.8 * i + 32:.3g}°F' for i in Celsius2]
-print(Fahrenheit)
+celsius2 = sample(range(0, 40), 10)
+fahrenheit = [f'{1.8 * i + 32:.1f}°F' for i in celsius2]
+print(fahrenheit)
