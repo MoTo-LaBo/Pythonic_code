@@ -61,8 +61,8 @@ print(shout_backwards('DataScienceHub'))
         from random import sample
 
 """
-# print(squared_primes([1, 3, 4, 7, 9, 10, 11, 13, 16, 43]))
-array = sample(range(0, 100), 10)
+array = [0, 1, 3, 4, 7, 9, 10, 11, 13, 16, 43]
+# array = sample(range(0, 100), 10)
 
 print('\n')
 print('--------------- prime (素数の抽出のみ) ----------------')
@@ -96,11 +96,14 @@ print('--------------- prime (素数の抽出のみ) ----------------')
 """
 
 
-def primes(array_r):
+def primes(array):
 
     prime = []
 
-    for i in array_r:
+    for i in array:
+        if not i > 1:
+            continue
+
         for j in range(2, i):
             if i % j == 0:
                 break
@@ -145,6 +148,9 @@ def squared_primes(array):
     prime = []
 
     for i in array:
+        if not i > 1:
+            continue
+
         for j in range(2, i):
             if i % j == 0:
                 break
