@@ -20,8 +20,13 @@ print('-------------- refactoring (simple) ① ---------------')
 上記の関数をシンプルに refactoring する
 """
 
+"""
+lambda 関数を変数に入れる事は推奨されていないので修正
+"""
+# shout_backwards = lambda x: x[::-1].upper() + '!!!'
 
-shout_backwards = lambda x: x[::-1].upper() + '!!!'
+
+def shout_backwards(x): return x[::-1].upper() + '!!!'
 
 
 print(shout_backwards('DataScienceHub'))
@@ -62,19 +67,47 @@ array = sample(range(0, 100), 10)
 print('\n')
 print('--------------- prime (素数の抽出のみ) ----------------')
 
-def primes(array):
+
+# def primes(array):
+
+#     prime = []
+
+#     for i in array:
+#         m = max(array)+1
+#         for j in range(1, m):
+#             if i % j == 0:
+#                 prime.append(i)
+#                 c = Counter(prime)
+
+#     primes_list = [i for i in c if c[i] == 2]
+#     return primes_list
+
+
+# print(f'配列要素 : {array}')
+# print(f'素数 : {primes(array)}')
+
+"""
+    上記の code 改善
+
+    ・　余計なものを省いて分かりやすくする
+        - Counter() いらない
+        - max() いらない
+        - list内包表記もいらない
+"""
+
+
+def primes(array_r):
 
     prime = []
 
-    for i in array:
-        m = max(array)+1
-        for j in range(1,m):
+    for i in array_r:
+        for j in range(2, i):
             if i % j == 0:
-                prime.append(i)
-                c = Counter(prime)
+                break
+        else:
+            prime.append(i)
 
-    primes_list = [i for i in c if c[i] == 2]
-    return primes_list
+    return prime
 
 
 print(f'配列要素 : {array}')
@@ -85,19 +118,40 @@ print('\n')
 print('------------------- refactoring ② --------------------')
 
 
+"""
+     code 改善
+
+    ・　余計なものを省いて分かりやすくする
+        - Counter() いらない
+        - max() いらない
+        - list内包表記もいらない
+"""
+
+
 def squared_primes(array):
+
+    # prime = []
+
+    # for i in array:
+    #     m = max(array)+1
+    #     for j in range(1, m):
+    #         if i % j == 0:
+    #             prime.append(i)
+    #             c = Counter(prime)
+
+    # s_p_list = [i*i for i in c if c[i] == 2]
+    # return s_p_list
 
     prime = []
 
     for i in array:
-        m = max(array)+1
-        for j in range(1, m):
+        for j in range(2, i):
             if i % j == 0:
-                prime.append(i)
-                c = Counter(prime)
+                break
+        else:
+            prime.append(i*i)
 
-    s_p_list = [i*i for i in c if c[i] == 2]
-    return s_p_list
+    return prime
 
 
 print(f'配列要素 : {array}')
