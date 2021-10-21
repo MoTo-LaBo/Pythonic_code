@@ -11,6 +11,7 @@ def linear_search(num, numbers):
             return i
         else:
             continue
+    return
 
 
 ls = linear_search(5, numbers)
