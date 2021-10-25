@@ -19,14 +19,13 @@ numerical_value = {
 
 
 def convert_to_roman(num):
-    roman_list = []
+    roman_num = ''
     for a_num, r_num in numerical_value.items():
         i, num = divmod(num, a_num)
-        if i != 0:
-            roman_list.append(r_num * i)
-        elif num == 0:
+        roman_num += (r_num * i)
+        if num == 0:
             break
-    return ''.join(roman_list)
+    return ''.join(roman_num)
 
 
 def main():
@@ -48,24 +47,24 @@ def main():
 
             # 1 ~ 3999 の領域を外れた場合の処理, その他例外全て
             else:
-                print(f'\n{i_num}は値の範囲以外です\n1 ~ 3999以下の自然数ので入力して下さい\n')
+                print(f'\n{i_num}は値の範囲以外です\n1 ~ 3999の範囲以内で入力して下さい\n')
                 continue
 
         # 数字以外だった場合 & float(小数)の判定 -> float(小数)だった場合の処理
         elif not input_value.isdecimal():
             try:
                 f_num = float(input_value)
-                print(f'\n入力された値は >> {f_num} << です\n1 ~ 3999以下の自然数を入力してください\n')
+                print(f'\n入力された値は >> {f_num} << です\n小数では計算できません\n')
                 continue
 
             except ValueError:
                 print(
-                    f'\n入力された値は >> {input_value} << です。\n1 ~ 3999以下の自然数を入力してください\n')
+                    f'\n入力された値は >> {input_value} << です。\n文字列では計算できません\n')
 
         # その他の例外処理
         else:
             print(
-                f'\n入力された値は >> {input_value} << です。\n1 ~ 3999以下の自然数を入力してください\n')
+                f'\n入力された値は >> {input_value} << です。\n正しい値を入力して下さい\n')
             continue
 
 
