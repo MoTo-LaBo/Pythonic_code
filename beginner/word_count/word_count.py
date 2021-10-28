@@ -19,9 +19,9 @@ def main():
     print('\n\t---------- Word Count ---------- \n')
 
     while True:
-        input_value = input('file を入力してください(xxx.txt | xxx/yyy/zzz.txt) >>> ')
+        input_value = input('file を入力してください(xxx.txt | xxx/yyy/zzz.py) >>> ')
         # 入力された値が適切な file or path かどうか判定
-        result = re.fullmatch('\w+\.txt$', os.path.basename(input_value))
+        result = re.fullmatch('\w+\.[a-zA-Z]{1,4}$', os.path.basename(input_value))
         if result:
             try:
                 word_count(input_value)
