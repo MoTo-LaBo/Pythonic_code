@@ -1,5 +1,6 @@
 # ---------- word-count : 単語カウントの課題 ----------
 import re
+import os
 from collections import Counter
 
 
@@ -18,18 +19,18 @@ def main():
     print('\n\t---------- Word Count ---------- \n')
 
     while True:
-        input_value = input('.txt file を入力してください(xxx.txt) >>> ')
-        # 入力された値が適切な file かどうか判定
-        result = re.fullmatch('\w+\.txt$', input_value)
+        input_value = input('file を入力してください(xxx.txt | xxx/yyy/zzz.txt) >>> ')
+        # 入力された値が適切な file or path かどうか判定
+        result = re.fullmatch('\w+\.txt$', os.path.basename(input_value))
         if result:
             try:
                 word_count(input_value)
                 break
             except:
-                print(f'そのような file はありません >> {input_value} ?\n')
+                print(f'No such file or directory: {input_value}')
         else:
-            print(f'入力が正しくありません >> {input_value} <<\n')
-        continue
+            print(f'{input_value}: 入力が正しくありません\n')
+            continue
 
 
 if __name__ == "__main__":
