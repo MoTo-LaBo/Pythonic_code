@@ -27,7 +27,7 @@ def main():
                 word_count(input_value)
                 break
             except:
-                print(f'No such file or directory: {input_value}')
+                print(f'No such file or directory: {input_value} ?')
         else:
             print(f'{input_value}: 入力が正しくありません\n')
             continue
