@@ -1,4 +1,4 @@
-# ---------- anagram-challenge: アナグラムの課題 ----------
+# ---------- anagram : アナグラム ----------
 import re
 
 
@@ -10,22 +10,26 @@ def is_anagram(word1, word2):
         word2 (str): 任意のローマ字・英単語
 
     Returns:
-        boolean: Anagram = True | Not Anagrame != False
+        boolean: Anagram = True or False
+        None
     """
 
-    # re.sub で特殊文字・空白を置き換え & lower で小文字へ変換
-    w1 = re.sub(r'[\t\n\r\[\]{}!@#$%^&*()-=_+;:~\'\"<>/?,.|]', '', word1).lower()
-    w2 = re.sub(r'[\t\n\r\[\]{}!@#$%^&*()-=_+;:~\'\"<>/?,.|]', '', word2).lower()
+    # 入力された文字が適切な word かを判定
+    result = re.match('\w[a-zA-Z]', word1) and re.match('\w[a-zA-Z]', word2)
 
-    # sorted で a, b, c 順に整える
-    list1 = sorted(w1)
-    list2 = sorted(w2)
+    # 適切な word であれば　判定処理
+    if result:
 
-    # Anagram 判定
-    if list1 == list2:
-        return True
+        # re.sub で特殊文字・空白を置き換え & lower で小文字へ変換
+        w1 = re.sub(r'[\t\n\r\[\]{}!@#$%^&*()-=_+;:~\'\"<>/?,.|]', '', word1).lower()
+        w2 = re.sub(r'[\t\n\r\[\]{}!@#$%^&*()-=_+;:~\'\"<>/?,.|]', '', word2).lower()
+
+        # sorted で a, b, c 順に整える, return True or False
+        return sorted(w1) == sorted(w2)
+
+    # 不適切な word であれば　None
     else:
-        return False
+        return
 
 
 def main():
@@ -37,17 +41,14 @@ def main():
             # .split で入力値を複数取得
             w1, w2 = input('英単語を2つ入力して下さい(Listen, Silent) >> ').split()
 
-            # 入力された文字が適切な word かを判定
-            result = re.match('\w[a-zA-Z]', w1) and re.match('\w[a-zA-Z]', w2)
+            # Anagram 判定結果 or 入力値のfilterの結果 (True, False, None)
+            judg = is_anagram(w1, w2)
 
-            if result:
-                try:
-                    print(f'\ninput word :\t{w1} {w2}\nAnagrame :\t{is_anagram(w1, w2)}')
-                    break
-
-                except:
-                    print(f'\n入力値は正しいですか ? >> {w1}, {w2}\n')
-
+            # return が None でなければ
+            if judg != None:
+                print(f'\ninput word :\t{w1} {w2}\nAnagrame :\t{judg}')
+                break
+            # return が None
             else:
                 print(f'\n入力値は正しいですか ? >> {w1}, {w2}\n')
 
