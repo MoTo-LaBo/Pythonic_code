@@ -1,42 +1,31 @@
 
-# ------------- Stairs with blocks (ブロック階段) ver 2 ------------- #
+# ------------- Stairs with blocks (ブロック階段) ver 1 ------------- #
 
 
-# ---------- 総和を求める function ---------- #
-def sum_total(num: int):
-    if num % 2 == 0:
-        odd = (num / 2) * (num + 1)
-        return int(odd)
-    else:
-        even = ((num + 1) / 2) * num
-        return int(even)
-
-
-# ---------- block_staris function ---------- #
-
-def block_stairs(num):
-
-    block = ''
-    count = 0
+def block_stairs(n):
 
     # 1<= n <= 10*10 判定
-    if 1 <= num <= 10 ** 10:
+    if 1 <= n <= 10 ** 10:
 
-        if num == 1:
-            num = num + 1
+        # block の箱と階段の数を count　変数宣言
+        block = ''
+        count = 0
 
-        # range 1 ~ 入力値分回す
-        for i in range(1, num):
+        # 入力値 1 の場合だけ 0 になってしまうので,　予防処理
+        if n == 1:
+            n = n + 1
 
-            # i の総和を求めて, 入力値から i の総和を引く(num の値が引けなくなるまで loop)
-            n = num - (sum_total(i))
+        # range 1 ~ 入力値分回す必要はないですが, loop を回す為に入力値を入れる
+        for i in range(1, n):
 
-            # 総和を引いた値 n の値で階段を出力範囲を判定
+            # 入力値がなくなるまで, i の値で引いていく
+            n = n - i
+
+            # 入力値がなくなるまで 階段生成 & count, 引けなくなったら終了
             if n >= 0:
                 count = i
-                block = i * "□"
-                print(f'{block}')
-            # num (入力値) が引けなくなった時点で終了
+                block = (i * "□")
+                print(f'{i} : {block}')
             else:
                 break
     else:
@@ -47,7 +36,7 @@ def block_stairs(num):
 
 def main():
 
-    print('------- Stairs with blocks (ブロック階段) ver 2 --------')
+    print('------- Stairs with blocks (ブロック階段) ver 1 --------')
 
     while True:
 
