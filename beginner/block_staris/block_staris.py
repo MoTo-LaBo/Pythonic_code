@@ -1,25 +1,42 @@
 
-# ------------- Stairs with blocks (ブロック階段) ver 1 ------------- #
+# ------------- Stairs with blocks (ブロック階段) ver 2 ------------- #
 
 
-def block_stairs(n):
+# ---------- 総和を求める function ---------- #
+def sum_total(num: int):
+    if num % 2 == 0:
+        odd = (num / 2) * (num + 1)
+        return int(odd)
+    else:
+        even = ((num + 1) / 2) * num
+        return int(even)
+
+
+# ---------- block_staris function ---------- #
+
+def block_stairs(num):
+
+    block = ''
+    count = 0
 
     # 1<= n <= 10*10 判定
-    if 1 <= n <= 10 ** 10:
+    if 1 <= num <= 10 ** 10:
 
-        # block と count
-        block = ''
-        count = 0
-        if n == 1:
-            n = n + 1
+        # 入力値 1 の場合だけ 0 になってしまうので,　予防処理
+        if num == 1:
+            num = num + 1
 
-        for i in range(1, n):
-            n = n - i
+        # range 1 ~ 入力値分回す必要はないですが, loop を回す為に入力値を入れる
+        for i in range(1, num):
 
+            # 入力値がなくなるまで i の総和で引く( 入力値が引けなくなったら loop 終了)
+            n = num - (sum_total(i))
+
+            # 入力値がなくなるまで 階段生成 & count, 引けなくなったら終了
             if n >= 0:
                 count = i
-                block = (i * "□")
-                print(f'{i} : {block}')
+                block = i * "□"
+                print(f'{block}')
             else:
                 break
     else:
@@ -30,7 +47,7 @@ def block_stairs(n):
 
 def main():
 
-    print('------- Stairs with blocks (ブロック階段) ver 1 --------')
+    print('------- Stairs with blocks (ブロック階段) --------')
 
     while True:
 
@@ -51,7 +68,7 @@ def main():
         elif not num.isdecimal():
             try:
                 n_fnum = float(num)
-                print(f'\n入力が少数です >> {n_fnum} << 1~100以下の自然数ので入力して下さい')
+                print(f'\n入力値が小数です >> {n_fnum} << 1~100以下の自然数ので入力して下さい')
 
             except ValueError:
                 print(f'\n入力Errorです >> {num} << 正しい値を入力して下さい')
