@@ -8,14 +8,16 @@ def block_stairs(num: int):
 
     staris = 0
     block = 1
+    blocks = ''
 
     while block <= num:
-
+        print(blocks)
         staris += 1
+        blocks = '□' * staris
         block = (staris * (staris + 1)) / 2
 
     else:
-        return staris
+        return staris - 1
 
 
 # ---------- main( ) function : Stairs with blocks ---------- #
