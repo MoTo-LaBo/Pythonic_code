@@ -1,35 +1,21 @@
 
-# ------------- Stairs with blocks (ブロック階段) ver 2 ------------- #
-
-# ---------- 総和を求める function ---------- #
-def sum_total(num: int):
-    if num % 2 == 0:
-        odd = (num / 2) * (num + 1)
-        return int(odd)
-    else:
-        even = ((num + 1) / 2) * num
-        return int(even)
+# ------------- Stairs with blocks (等差数列 ver)  ------------- #
 
 
-# ---------- block_staris function ---------- #
+# ---------- 等差数列 algorithm  ---------- #
 
-def block_stairs(num):
+def block_stairs(num: int):
 
-    block = '□'
-    stairs = 1
-    total = 1
-    inupt_num = num
+    staris = 0
+    block = 1
 
-    while total <= inupt_num:
+    while block <= num:
 
-        print(block)
-        stairs += 1
-        block += '□'
-
-        total = sum_total(stairs)
+        staris += 1
+        block = (staris * (staris + 1)) / 2
 
     else:
-        return stairs
+        return staris
 
 
 # ---------- main( ) function : Stairs with blocks ---------- #
