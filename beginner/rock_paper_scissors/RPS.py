@@ -15,46 +15,35 @@ def main():
 
     while True:
         user = input(user_txt)
-        try:
-            result = re.fullmatch('\w+ |r|p|s{1}$', user)
+        result = re.fullmatch('\W+ |r|p|s|R|P|S{1}$', user)
 
-            if result:
-                rps = ["r", "p", "s"]
-                rps_list = ["rock", "paper", "scissors"]
+        if result:
 
-                pc = random.choice(rps)
+            rps = {"r": "rock", "p": "paper", "s": "scissors"}
+            rps_k = list(rps.keys())
 
-                for i, v in enumerate(rps):
-                    if user == v:
-                        user = i
+            pc = random.choice(rps_k)
+            user = user.lower()
 
-                for i2, v2 in enumerate(rps_list):
-                    if user == i2:
-                        user_v = v2
+            for i, v in enumerate(rps):
+                if user == v:
+                    user = i
 
-                for i3, v3 in enumerate(rps):
-                    if pc == v3:
-                        pc = i3
+            for i2, v2 in enumerate(rps):
+                if pc == v2:
+                    pc = i2
 
-                for i4, v4 in enumerate(rps_list):
-                    if pc == i4:
-                        pc_v = v4
-
-                if user == pc:
-                    print(f'\nDRAW\nYour choice: {user_v}\nPC\'s choice: {pc_v}')
-                    break
-                elif user == 2 and pc == 1 or user == 1 and pc == 0 or user == 0 and pc == 2:
-                    print(f'\nWIN\nYour choice: {user_v}\nPC\'s choice: {pc_v}')
-                    break
-                elif user == 0 and pc == 1 or user == 1 and pc == 2 or user == 2 and pc == 0:
-                    print(f'\nLOSE\nYour choice: {user_v}\nPC\'s choice: {pc_v}')
-                    break
-            else:
-                print(f'r, p, s の中から選んで下さい: {user} ?')
+            if user == pc:
+                print(f'\nDRAW\nYour choice: {user}\nPC\'s choice: {pc}')
                 continue
-
-        except:
-            print(f'入力値は正しいですか: {user} ?')
+            elif user == 2 and pc == 1 or user == 1 and pc == 0 or user == 0 and pc == 2:
+                print(f'\nWIN\nYour choice: {user}\nPC\'s choice: {pc}')
+                break
+            elif user == 0 and pc == 1 or user == 1 and pc == 2 or user == 2 and pc == 0:
+                print(f'\nLOSE\nYour choice: {user}\nPC\'s choice: {pc}')
+                break
+        else:
+            print(f'r, p, s の中から選んで下さい: {user} ?')
             continue
 
 
