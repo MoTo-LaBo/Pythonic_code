@@ -46,7 +46,7 @@ print(shout_backwards('DataScienceHub'))
 上記の code list内包表記１行だと見にくいので,可読性を良くするために refactoring する
 
 
-        「 素数は１と自身の数(n)でしか割り切れない 」
+        「 素数は１と自身の数(n)でしか割り切れない 」
          割り切れる要素が２つしかないという事 = 素数
 
     ・　python 標準ライブラリ collections　を使用
