@@ -4,26 +4,29 @@ def cul_price(five, ten, five_hundred):
     t_num = ten * 10
 
     # 5円が2枚以上 and 10円が1枚以上 and 5円と10円の合計が 500円以下
-    if five >= 2 & ten >= 1 & f_num + t_num < 500:
-
-        # 10円を5円に両替する -> (five + 1)通り
-        five = five + (ten * 2) + 1
-
-        # 0 = 1通りなので
-        five_hundred += 1
-        return five * five_hundred - 1
+    if five >= 2 and ten >= 1 and f_num + t_num <= 500:
+        # 10円を5円に両替する -> (five + 1)通り * five_hundred + 1 通り
+        return (five + (ten * 2) + 1) * (five_hundred + 1) - 1
 
     # 500円以上であれば 500円も5円に両替 : 全て(five + 1) 通りにする
-    elif f_num + t_num >= 500:
-        return five + (five_hundred * 100) - 1
+    elif five >= 2 and ten >= 1 and f_num + t_num >= 501:
+        # 10円を5円に両替する -> (five + 1 - 1)通り
+        return five + (ten * 2) + (five_hundred * 100)
 
-    # 上記以外の場合
+    # 5円 = 0 , 10円 = 0, 500円 = 0 枚 and  five + ten < 500
+    elif f_num + t_num < 500:
+        # 各種の通り値を掛ける
+        return (five + 1) * (ten + 1) * (five_hundred + 1) - 1
+
+    # five で 500円以上
+    elif f_num >= 500:
+        # 500円を5円に両替
+        return (five + (five_hundred * 100) + 1) * (ten + 1) - 1
+
+    # ten で 500以上
     else:
-        five += 1
-        ten += 1
-        five_hundred += 1
-
-        return five * ten * five_hundred - 1
+        # 500円を10円に両替
+        return (five + 1) * (ten + (five_hundred * 50) + 1) - 1
 
 
 def main():
