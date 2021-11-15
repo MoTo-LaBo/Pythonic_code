@@ -18,7 +18,6 @@ def coin_num(price: int):
 
     for pay in coins:
         coin_num, price = divmod(price, pay)
-
         if price >= 0:
             count += coin_num
 
@@ -26,19 +25,15 @@ def coin_num(price: int):
 
 
 def main():
-
     print('\n ---------- Prepare Coins (利用硬貨の最適化) ---------- \n')
-
     while True:
         try:
             input_value = int(input('1000円以下の金額を入力して下さい >> '))
-
             result = coin_num(input_value)
 
             if result:
                 print(f'\n硬貨の枚数: {result} 枚')
                 break
-
             else:
                 print(f'1 ~ 1000円以内で入力して下さい: {input_value} 円?\n')
                 continue
